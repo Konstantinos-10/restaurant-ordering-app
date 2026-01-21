@@ -34,7 +34,7 @@ document.addEventListener('click', (e) => {
  * This code expects the real menu id to be the FIRST character (itemId[0]).
  */
 function handleAddItemClick(itemId) {
-    const itemRealId = itemId[0]
+    const itemRealId = itemId.split('-')[0]
 
     // Read current total from DOM (single source of truth in your current setup)
     let currentTotalPrice = Number(checkoutTotalPrice.innerHTML.replace('$', ''))
@@ -128,7 +128,7 @@ function renderMenu() {
                 </div>
 
                 <div class="add-item-button">
-                    <i class="fa-solid fa-plus" data-item-id="${menuItem.id}${uuidv4()}"></i>
+                    <i class="fa-solid fa-plus" data-item-id="${menuItem.id}-add-${uuidv4()}"></i>
                 </div>
             </div>
         `
