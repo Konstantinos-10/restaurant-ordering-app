@@ -7,6 +7,12 @@ import { v4 as uuidv4 } from 'https://jspm.dev/uuid'
 const items = document.querySelector('.items')
 const checkoutItemsList = document.querySelector('.checkout-items-list')
 const checkoutTotalPrice = document.getElementById('checkout-total-price')
+const completeOrderBtn = document.querySelector('.complete-order-button')
+
+const paymentModal = document.querySelector('.payment-modal')
+const form = document.querySelector('.payment-form')
+
+const thankYouMsg = document.querySelector('.thank-you-message')
 
 // ==============================
 // Global click handler (event delegation)
@@ -26,6 +32,25 @@ document.addEventListener('click', (e) => {
     if (itemRemoveId) {
         handleRemoveItemClick(itemRemoveId)
     }
+})
+
+completeOrderBtn.addEventListener('click', () => {
+    paymentModal.classList.toggle('hidden')
+})
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    paymentModal.classList.toggle('hidden')
+    thankYouMsg.classList.toggle('hidden')
+
+    const formData = new FormData(document.querySelector('form'))
+    const formName = formData.get('card-name')
+
+    thankYouMsg.innerHTML = `<h2>Thank you for your order, ${formName}!</h2>`
+    // Reset checkout
+    checkoutItemsList.innerHTML = ''
+    checkoutTotalPrice.innerHTML = '$0'
+    document.querySelector('.checkout-section').classList.add('toggleDisplay')
 })
 
 /**

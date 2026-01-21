@@ -41,6 +41,20 @@
                 </div>
             </div>
 
+            <div class="payment-modal hidden">
+                <h2>Enter Card Details</h2>
+                <form class="payment-form">
+                    <div class="form-group">
+                        <input type="text" id="card-name" name="card-name" placeholder="Enter Your Name" required>
+                        <input type="text" id="card-number" name="card-number" pattern="[0-9]{16}" maxlength="16" placeholder="Enter Card Number" required>
+                        <input type="text" id="card-cvv" name="card-cvv" pattern="[0-9]{3}" maxlength="3" placeholder="Enter CVV" required>
+                    </div>
+                    <button type="submit" class="pay-button">Pay</button>
+                </form>
+            </div>
+
+            <div class="hidden thank-you-message">
+            </div>
         </main>
 
 	    <script src="index.js" type="module"></script>
